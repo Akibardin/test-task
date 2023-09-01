@@ -20,17 +20,10 @@ jobs:
           build-command: make html
           pre-build-command: ls -a
       - name: push to github.io
-        uses: GuillaumeFalourd/git-commit-push@v1.3
+        uses: sphinx-notes/pages@3.0
         with:
-          email: ${{ github.actor }}
-          name:  ${{ github.actor }}
-          commit_message: update new version
-          target_branch: ${{ github.ref }}
-          files: docs/build
-          remote_repository: https://github.com/Akibardin/akibardin.github.io
-          access_token: ${{ github.token }}
-          force: 0
-          empty: 0
-          tags: 0
-
-  
+          documentation_path: ./docs
+          # Path to requirements file, used in `pip install -r XXX` command
+          requirements_path: requirements.txt
+          # Extras of Requirement Specifier, used in `pip install .[XXX]` command
+          python_version: 3.8
