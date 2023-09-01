@@ -24,8 +24,8 @@ jobs:
         run: |
           echo ${{ REPOSITORY_URL }} ${{ REPOSITORY_NAME }}
           git clone https://$env:SUPERSECRET@$REPOSITORY_URL
-          mv -f build/html/* $env:REPOSITORY_NAME/
-          cd $env:REPOSITORY_NAME
+          mv -f build/html/* $REPOSITORY_NAME/
+          cd $REPOSITORY_NAME
           git add *
           git commit -m "upd site"
           git push origin main
