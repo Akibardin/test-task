@@ -19,3 +19,11 @@ jobs:
         run: |
           cd ./docs
           make html
+      - name: publish to github.io
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${secrets.SUPERSECRET}
+          # Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})
+          repository: ${env.REPOSITORY_URL}
+          # Destination branch to push changes
+          branch: main
