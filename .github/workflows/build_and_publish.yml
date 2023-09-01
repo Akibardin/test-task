@@ -20,9 +20,10 @@ jobs:
           cd ./docs
           make html
       - name: publish to github.io
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          branch: main
-          directory: docs/build/html
-          repository: ${{ env.REPOSITORY_URL }}
-          github_token:  ${{ secrets.SUPERSECRET }}
+        run: |
+          git clone https://${{ secrets.SUPERSECRET }}@${{env.REPOSITORY_URL}}
+          mv -f build/html/* ${{ env.REPOSITORY_NAME }}
+          cd ${{ env.REPOSITORY_NAME }}
+          git add *
+          git commit -m "upd site"
+          git push origin main
