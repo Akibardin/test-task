@@ -10,10 +10,6 @@ on:
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
-    env:
-      SUPERSECRET: ${{ secrets.SUPERSECRET }}
-      REPOSITORY_URL: ${{env.REPOSITORY_URL}}
-      REPOSITORY_NAME: ${{env.REPOSITORY_NAME}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,7 +19,11 @@ jobs:
         run: |
           cd ./docs
           make html
-      - name: push to github.io 
+      - name: push to github.io
+        env:
+          SUPERSECRET: ${{ secrets.SUPERSECRET }}
+          REPOSITORY_URL: ${{env.REPOSITORY_URL}}
+          REPOSITORY_NAME: ${{env.REPOSITORY_NAME}}
         run: |
           git clone https://$env:SUPERSECRET@$env:REPOSITORY_URL
           mv -f build/html/* $env:REPOSITORY_NAME/
