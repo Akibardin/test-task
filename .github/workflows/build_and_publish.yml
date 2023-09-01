@@ -18,6 +18,7 @@ jobs:
         with:
           docs-folder: docs/
           build-command: make html
+          pre-build-command: ls -a
       - name: push to github.io
         uses: GuillaumeFalourd/git-commit-push@v1.3
         with:
