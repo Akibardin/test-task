@@ -9,7 +9,7 @@ About
    :param kind: Optional "" of ingredients.
    :type kind: list[company] or None
    :return: The ingredients list.
-   :rtype: list[company] 
+   :rtype: list[company]  
 
    Example
 .. code-block:: python
