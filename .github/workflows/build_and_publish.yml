@@ -26,6 +26,7 @@ jobs:
           REPOSITORY_URL: ${{ vars.REPOSITORY_URL }}
         run: |
           git clone https://$SUPERSECRET@$REPOSITORY_URL
+          rm -rf $REPOSITORY_NAME/
           mv -f docs/build/html/* $REPOSITORY_NAME
           cd $REPOSITORY_NAME
           git config --local user.email "deploy_bot@gmail.com"
