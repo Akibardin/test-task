@@ -14,10 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: build html
-        run: |
-          ls -a
-          cd docs
-          make html
+        uses: rickstaa/action-sphinx-composite@v1.0.0
+        with:
+          docs-folder: docs/
+          build-command: make html
       - name: push to github.io
         uses: GuillaumeFalourd/git-commit-push@v1.3
         with:
