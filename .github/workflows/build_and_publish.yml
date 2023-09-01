@@ -22,7 +22,7 @@ jobs:
         env:
           SUPERSECRET: ${{ secrets.SUPERSECRET }}
         run: |
-          echo ${{ REPOSITORY_URL }} ${{ REPOSITORY_NAME }}
+          echo "Repository variable : ${{ vars.REPOSITORY_VAR }}"
           git clone https://$env:SUPERSECRET@$${{ REPOSITORY_URL }}
           mv -f build/html/* ${{ REPOSITORY_NAME }}/
           cd ${{ REPOSITORY_NAME }}
