@@ -1,0 +1,32 @@
+name: CI
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-22
+    steps:
+      - name: build html
+        run: |
+          cd docs
+          make html
+      - name: push to github.io
+        uses: GuillaumeFalourd/git-commit-push@v1.3
+        with:
+          email: ${{ github.actor }}
+          name:  ${{ github.actor }}
+          commit_message: update new version
+          target_branch: ${{ github.ref }}
+          files: docs/build
+          remote_repository: https://github.com/Akibardin/akibardin.github.io
+          access_token: ${{ github.token }}
+          force: 0
+          empty: 0
+          tags: 0
+
+  
