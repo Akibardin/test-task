@@ -22,8 +22,8 @@ jobs:
       - name: push to github.io
         env:
           SUPERSECRET: ${{ secrets.SUPERSECRET }}
-          REPOSITORY_URL: ${{env.REPOSITORY_URL}}
-          REPOSITORY_NAME: ${{env.REPOSITORY_NAME}}
+          REPOSITORY_URL: ${{secrets.REPOSITORY_URL}}
+          REPOSITORY_NAME: ${{secrets.REPOSITORY_NAME}}
         run: |
           git clone https://$env:SUPERSECRET@$env:REPOSITORY_URL
           mv -f build/html/* $env:REPOSITORY_NAME/
