@@ -9,6 +9,7 @@ on:
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
+    environment: test env
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -21,12 +22,12 @@ jobs:
       - name: push to github.io
         env:
           SUPERSECRET: ${{ secrets.SUPERSECRET }}
-          REPOSITORY_NAME: ${{ secrets.REPOSITORY_NAME }}
-          REPOSITORY_URL: ${{ secrets.REPOSITORY_URL }}
+          REPOSITORY_NAME: ${{ vars.REPOSITORY_NAME }}
+          REPOSITORY_URL: ${{ vars.REPOSITORY_URL }}
         run: |
-          git clone https://"$env:SUPERSECRET"@$"env:REPOSITORY_URL"
-          mv -f build/html/* $"env:REPOSITORY_NAME"
-          cd $"env:REPOSITORY_NAME"
+          git clone https://$SUPERSECRET@$REPOSITORY_URL
+          mv -f build/html/* $REPOSITORY_NAME
+          cd $REPOSITORY_NAME
           git add *
           git commit -m "upd site"
           git push origin main
