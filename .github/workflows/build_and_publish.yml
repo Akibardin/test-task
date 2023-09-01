@@ -26,6 +26,7 @@ jobs:
           REPOSITORY_URL: ${{ vars.REPOSITORY_URL }}
         run: |
           git clone https://$SUPERSECRET@$REPOSITORY_URL
+          ls -a
           mv -f build/html/* $REPOSITORY_NAME
           cd $REPOSITORY_NAME
           git add *
