@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: build html
         run: |
+          ls -a
           cd docs
           make html
       - name: push to github.io
