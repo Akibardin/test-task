@@ -27,7 +27,7 @@ jobs:
         run: |
           git clone https://$SUPERSECRET@$REPOSITORY_URL
           ls -a
-          mv -f build/html/* $REPOSITORY_NAME
+          mv -f docs/build/html/* $REPOSITORY_NAME
           cd $REPOSITORY_NAME
           git add *
           git commit -m "upd site"
