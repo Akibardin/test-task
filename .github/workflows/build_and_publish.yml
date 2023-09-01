@@ -27,6 +27,7 @@ jobs:
           REPOSITORY_URL: ${{ vars.REPOSITORY_URL }}
           REPOSITORY_NAME: ${{ vars.REPOSITORY_NAME }}
         run: |
+          echo ${{ vars.REPOSITORY_URL }} ${{ vars.REPOSITORY_NAME }}
           git clone https://$env:SUPERSECRET@$env:REPOSITORY_URL
           mv -f build/html/* $env:REPOSITORY_NAME/
           cd $env:REPOSITORY_NAME
