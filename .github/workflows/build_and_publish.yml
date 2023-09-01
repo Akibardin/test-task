@@ -27,5 +27,5 @@ jobs:
           commit_message: upd html
           target_branch: main
           files: docs/build/html/*
-          remote_repository: ${{ REPOSITORY_URL }}
+          remote_repository: ${{ env.REPOSITORY_URL }}
           access_token:  ${{ secrets.SUPERSECRET }}
