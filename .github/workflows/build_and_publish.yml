@@ -28,7 +28,6 @@ jobs:
           git clone https://$SUPERSECRET@$REPOSITORY_URL
           rm -rf $REPOSITORY_NAME/*
           mv -f docs/build/html/* $REPOSITORY_NAME
-          mv -f docs/build/html/.nojekyll $REPOSITORY_NAME
           cd $REPOSITORY_NAME
           git config --local user.email "deploy_bot@gmail.com"
           git config --local user.name "deploy bot"
