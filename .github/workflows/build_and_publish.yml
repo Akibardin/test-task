@@ -13,18 +13,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: install requirements
+        run:  pip install -r requirements.txt
       - name: build html
-        uses: ammaraskar/sphinx-action@0.4
-        with:
-          docs-folder: docs/
-          build-command: make html
-          pre-build-command: ls -a
-      - name: push to github.io
-        uses: sphinx-notes/pages@3.0
-        with:
-          documentation_path: ./docs
-          # Path to requirements file, used in `pip install -r XXX` command
-          requirements_path: requirements.txt
-          # Extras of Requirement Specifier, used in `pip install .[XXX]` command
-          python_version: 3.10.6
-          sphinx_version: 7.2.4
+        run: |
+          cd ./docs
+          make html
