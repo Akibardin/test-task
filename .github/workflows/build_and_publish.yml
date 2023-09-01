@@ -22,10 +22,7 @@ jobs:
       - name: publish to github.io
         uses: ad-m/github-push-action@v0.6.0
         with:
-          email: ${{ github.actor }}@users.noreply.github.com
-          name: bot
-          commit_message: upd html
-          target_branch: main
-          files: docs/build/html/*
-          remote_repository: ${{ env.REPOSITORY_URL }}
-          access_token:  ${{ secrets.SUPERSECRET }}
+          branch: main
+          directory: docs/build/html
+          repository: ${{ env.REPOSITORY_URL }}
+          github_token:  ${{ secrets.SUPERSECRET }}
